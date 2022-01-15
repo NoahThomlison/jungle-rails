@@ -1,12 +1,16 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Admin Dashboard</h1>
 <section class="dashboard">
   <div class="panel">
     <h4>Product Count:</h4>
     <h5><%= @products %></h5>
+    <%= link_to 'Products', [:admin, :products], class: 'btn btn-info' %>
   </div>
-  <div class="panel">
+  
+  <div class="panel"/>
     <h4>Category Count:  </h4>
     <h5><%= @categories %></h5>
+    <%= link_to 'Categories', [:admin, :categories], class: 'btn btn-info' %>
   </div>
 </section>
+
+
