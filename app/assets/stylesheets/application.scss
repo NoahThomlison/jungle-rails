@@ -15,3 +15,18 @@ body {
 form.button_to {
   display: inline;
 }
+
+.signUpForm{
+  display:flex;
+  flex-direction: column;
+  width: 75%
+}
+
+.form{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+input{
+  margin: 5px;
+}
