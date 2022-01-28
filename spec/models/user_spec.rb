@@ -59,4 +59,31 @@ RSpec.describe User, type: :model do
       expect(@user).to be_invalid
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it "authenticate with credentials should return the proper user if correct email and password is given" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email:   "email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user.save!  
+      expect(@user.authenticate_with_credentials(@user.email, @user.password)).to eq(@user)
+    end
+
+    it "authenticate with credentials should return the proper user if correct email and password is given and email has leading spaces" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email:   "email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user.save!  
+      expect(@user.authenticate_with_credentials("   email@email.com", @user.password)).to eq(@user)
+    end
+
+    it "authenticate with credentials should return the proper user if correct email has wrong case" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email:   "email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user.save!  
+      expect(@user.authenticate_with_credentials("EMAIL@EMAIL.com", @user.password)).to eq(@user)
+    end
+
+    it "authenticate with credentials should not return the proper user if correct email and password is given and should return nil" do
+      @user = User.new(first_name: "first_name", last_name: "last_name", email:   "email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user.save!  
+      expect(@user.authenticate_with_credentials(@user.email, "notPassword")).not_to eq(@user)    
+      expect(@user.authenticate_with_credentials(@user.email, "notPassword")).to eq(nil)    
+    end
+  end
 end
