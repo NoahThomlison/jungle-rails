@@ -57,8 +57,7 @@ ActiveRecord::Schema.define(version: 20220116001543) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "name"
     t.string   "email"
     t.string   "password"
     t.string   "password_confirmation"
