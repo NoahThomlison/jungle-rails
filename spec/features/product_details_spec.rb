@@ -18,7 +18,6 @@ RSpec.feature "Visitor navigates to a product details page from the home page", 
   scenario "They see all products" do
     # ACT
     visit root_path
-    puts page.html
 
     find("a[href='/products/10']", match: :first).click
 
