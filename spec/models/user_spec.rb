@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
     it "should be invalid and throw error if name is not present" do
       @user = User.new(name: nil, email: "email@email.com", password: "12345678", password_confirmation: "12345678")
       expect(@user).to be_invalid
-      expect(@user.errors.full_messages).to eq(["First name can't be blank"])
+      expect(@user.errors.full_messages).to eq(["Name can't be blank"])
     end
 
     # email tests 
@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       @user1 = User.new(name: "name", email: "email@email.com", password: "12345678", password_confirmation: "12345678")
       @user1.save!
 
-      @user2 = User.new(name: "name", email: "Email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user2 = User.new(name: "name", email: "email@email.com", password: "12345678", password_confirmation: "12345678")
       expect(@user2).to be_invalid
       expect(@user2.errors.full_messages).to eq(["Email has already been taken"])
     end
@@ -67,9 +67,9 @@ RSpec.describe User, type: :model do
     end
 
     it "authenticate with credentials should return the proper user if correct email has wrong case" do
-      @user = User.new(name: "name", email:   "email@email.com", password: "12345678", password_confirmation: "12345678")
+      @user = User.new(name: "name", email: "EXAMPLe@DOMAIN.CoM", password: "12345678", password_confirmation: "12345678")
       @user.save!  
-      expect(@user.authenticate_with_credentials("EMAIL@EMAIL.com", @user.password)).to eq(@user)
+      expect(@user.authenticate_with_credentials("eXample@domain.COM", @user.password)).to eq(@user)
     end
 
     it "authenticate with credentials should not return the proper user if correct email and password is given and should return nil" do
