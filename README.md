@@ -7,13 +7,13 @@ Customers can add items to their shopping cart, filter shown items by categories
 
 Admins can create additional products and categories. They can also delete existing products and categories.
 
-### Jungle Overview and Filtering
+## Jungle Overview and Filtering
 ![](jungleFiltering.gif)
 
-### Jungle Checkout
+## Jungle Checkout
 ![](jungleCheckout.gif)
 
-### Jungle Admin Abilities
+## Jungle Admin Abilities
 ![](jungleAdmin.gif)
 
 ## Additional Steps for Apple M1 Machines
